@@ -1,0 +1,15 @@
+#ignirer le dossier de compiltion rust
+target/
+
+#fichier de peristnce
+snapshot.bin
+
+#les fichiers systemes windows
+.env
+
+#fichiers systemes mc
+.DS_Store
+
+#vribles d'env
+desktop.ini
+Thumbs.db
