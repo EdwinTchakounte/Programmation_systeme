@@ -1,0 +1,27 @@
+services:
+  microcache:
+    build: .
+    container_name: microcache
+    ports:
+      - "6379:6379"
+    volumes:
+      - microcache-data:/app
+    restart: unless-stopped
+
+  python-test:
+    image: python:3.13-slim
+    container_name: python-test
+    depends_on:
+      - microcache
+    volumes:
+      - ./test_redis.py:/app/test_redis.py:ro
+    working_dir: /app
+    environment:
+      - REDIS_HOST=microcache
+      - REDIS_PORT=6379
+    command: >
+      sh -c "pip install --quiet redis &&
+             python test_redis.py"
+
+volumes:
+  microcache-data:
