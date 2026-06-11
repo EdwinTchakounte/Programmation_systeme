@@ -1,0 +1,10 @@
+target/
+snapshot.bin
+*.py
+.git/
+.gitignore
+README.md
+*.docx
+Dockerfile
+docker-compose.yml
+.dockerignore
